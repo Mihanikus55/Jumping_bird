@@ -6,6 +6,7 @@ from pygame.locals import *
 from settings import Settings
 
 
+#0134910491042
 class JumpingBird:
     """Класс иницилизирующий игру на поверхностном уровне"""
     def __init__(self):
