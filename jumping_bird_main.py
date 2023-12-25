@@ -4,6 +4,7 @@ import pygame
 from pygame.locals import *
 
 from settings import Settings
+from starting_window import StartingWindow
 
 
 class JumpingBird:
@@ -12,11 +13,14 @@ class JumpingBird:
         pygame.init()
 
         self.settings = Settings()
+        self.starting_window = StartingWindow()
 
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
-        pygame.display.set_caption("Jumping Bird")
-        pygame.display.set_icon(pygame.image.load("data/game_icon.png").convert_alpha())
+        pygame.display.set_caption(self.settings.caption)
+        pygame.display.set_icon(self.settings.icon)
+
+        self.is_start_window = True
 
         self.fpsClock = pygame.time.Clock()
 
@@ -24,8 +28,13 @@ class JumpingBird:
         """Метод с основным циклом игры"""
         while True:
             self.check_events()
+            if self.is_start_window:
+                self.starting_window.update(self.screen)
+            else:
+                self.update_screen()
 
-            self.update_screen()
+            pygame.display.flip()
+            self.fpsClock.tick(self.settings.fps)
 
     def check_events(self):
         """Метод обрабатывающий события (взаимодействие с пользователем)"""
@@ -37,9 +46,6 @@ class JumpingBird:
     def update_screen(self):
         """Метод в котором происходит основная отрисовка игры"""
         self.screen.fill(self.settings.bg_color)
-
-        pygame.display.flip()
-        self.fpsClock.tick(self.settings.fps)
 
 
 if __name__ == '__main__':
