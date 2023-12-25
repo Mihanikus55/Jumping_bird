@@ -7,20 +7,19 @@ from settings import Settings
 from starting_window import StartingWindow
 
 
-#0134910491042
 class JumpingBird:
     """Класс иницилизирующий игру на поверхностном уровне"""
     def __init__(self):
         pygame.init()
 
         self.settings = Settings()
-        self.starting_window = StartingWindow()
 
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption(self.settings.caption)
         pygame.display.set_icon(self.settings.icon)
 
+        self.starting_window = StartingWindow(self.screen)
         self.is_start_window = True
 
         self.fpsClock = pygame.time.Clock()
@@ -30,7 +29,7 @@ class JumpingBird:
         while True:
             self.check_events()
             if self.is_start_window:
-                self.starting_window.update(self.screen)
+                self.starting_window.update()
             else:
                 self.update_screen()
 
