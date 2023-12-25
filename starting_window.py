@@ -4,5 +4,7 @@ from settings import Settings
 class StartingWindow:
     def __init__(self):
         self.settings = Settings()
-        pass
+
+    def update(self, screen):
+        screen.blit(self.settings.starting_bg, (0, 0))
 
