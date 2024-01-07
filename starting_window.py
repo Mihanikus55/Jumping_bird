@@ -6,9 +6,10 @@ from settings import Settings
 
 class StartingWindow:
     def __init__(self, screen):
+        self.settings = Settings()
         self.buttons = pygame.sprite.Group()
         self.screen = screen
-        self.settings = Settings()
+        self.create_buttons()
 
     def create_buttons(self):
         Button(self.screen, self.buttons, 870, 30, 300, 100, 'LOCKER')
