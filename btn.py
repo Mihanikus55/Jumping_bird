@@ -51,7 +51,7 @@ Button(160, 30, 120, 80, 'XP')
 Button(100, 500, 150, 80, 'EASY')
 Button(500, 500, 150, 80, 'MEDIUM')
 Button(1000, 500, 150, 80, 'HARD')
-Button(250, 600, 700, 80, 'БЕСКОНЕЧНАЯ ИГРА')
+Button(250, 600, 700, 80, 'INFINITY')
 
 while True:
     screen.fill((0, 0, 0))
