@@ -11,4 +11,3 @@ class Locker:
 
     def update_screen(self):
         self.screen.blit(self.settings.starting_bg, (0, 0))
-
