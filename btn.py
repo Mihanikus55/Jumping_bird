@@ -12,6 +12,7 @@ class Button(Sprite):
         self.y = y
         self.width = width
         self.height = height
+        self.button_text = button_text
         self.fillColors = {
             'normal': '#ffffff',
             'hover': '#666666',
@@ -21,7 +22,7 @@ class Button(Sprite):
         self.buttonSurface = pygame.Surface((self.width, self.height))
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-        self.buttonSurf = self.settings.buttons_font.render(button_text, True, (20, 20, 20))
+        self.buttonSurf = self.settings.buttons_font.render(self.button_text, True, (20, 20, 20))
 
     def update(self):
         mousePos = pygame.mouse.get_pos()
