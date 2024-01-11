@@ -21,10 +21,11 @@ class JumpingBird:
         pygame.display.set_caption(self.settings.caption)
         pygame.display.set_icon(self.settings.icon)
 
-        self.starting_window = StartingWindow(self.screen)
+        self.starting_window = StartingWindow(self.screen, self.settings)
+        self.game_window = GameWindow(self.screen, self.settings)
 
         self.game_is_running = False
-        self.cur_window = self.starting_window
+        self.set_cur_window(self.starting_window)
 
         self.fpsClock = pygame.time.Clock()
 
@@ -51,22 +52,25 @@ class JumpingBird:
                 # TODO: Реализовать меню паузы чтобы можно было нормально вернуться на начальное окно
                 else:
                     self.cur_window = self.starting_window
+                    self.screen.fill((0, 0, 0))
                     self.game_is_running = False
 
     def check_buttons_clicked(self, pos):
         for button in self.cur_window.buttons:
             if button.buttonRect.collidepoint(pos):
-                action = self.cur_window.check_button_action(button.button_text)
-                if action:
-                    self.choose_window_to_change(action)
+                button.do_task()
+                self.choose_window_to_change(self.settings.cur_wnd)
 
     def choose_window_to_change(self, name_wnd):
+        if name_wnd == 'starting_window':
+            self.set_cur_window(self.starting_window)
         if name_wnd == 'game_window':
-            self.game_is_running = True  # # TODO: Реализовать нормальную смену состояния игры
-            self.change_cur_window(GameWindow)
+            self.game_is_running = True  # TODO: Реализовать нормальную смену состояния игры
+            self.set_cur_window(self.game_window)
 
-    def change_cur_window(self, wnd):
-        self.cur_window = wnd(self.screen)
+    def set_cur_window(self, wnd):
+        self.screen.fill((0, 0, 0))
+        self.cur_window = wnd
 
 
 if __name__ == '__main__':
