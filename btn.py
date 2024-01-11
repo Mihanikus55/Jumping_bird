@@ -13,11 +13,6 @@ class Button(Sprite):
         self.width = width
         self.height = height
         self.button_text = button_text
-        self.fillColors = {
-            'normal': '#ffffff',
-            'hover': '#666666',
-            'pressed': '#333333',
-        }
         self.settings = Settings()
         self.buttonSurface = pygame.Surface((self.width, self.height))
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
