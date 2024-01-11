@@ -1,13 +1,12 @@
 import pygame
 from pygame.sprite import Sprite
 
-from settings import Settings
-
 
 class Button(Sprite):
-    def __init__(self, screen, buttons, x, y, width, height, button_text):
+    def __init__(self, screen, settings, buttons, x, y, width, height, button_text, task):
         super().__init__(buttons)
         self.screen = screen
+        self.task = task
         self.x = x
         self.y = y
         self.width = width
@@ -18,11 +17,15 @@ class Button(Sprite):
             'hover': '#666666',
             'pressed': '#333333',
         }
-        self.settings = Settings()
+        self.settings = settings
         self.buttonSurface = pygame.Surface((self.width, self.height))
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
         self.buttonSurf = self.settings.buttons_font.render(self.button_text, True, (20, 20, 20))
+
+    def do_task(self):
+        if self.task:
+            self.task()
 
     def update(self):
         mousePos = pygame.mouse.get_pos()
