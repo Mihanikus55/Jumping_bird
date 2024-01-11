@@ -9,8 +9,8 @@ class GameWindow:
         self.buttons = pygame.sprite.Group()
 
     def update(self):
-        for i in range(5):
-            self.screen.blit(self.settings.load_paralax_background(self.settings.game_background)[i], (0, 0))
+        for layer in self.settings.game_background:
+            self.screen.blit(layer, (0, 0))
 
 
 

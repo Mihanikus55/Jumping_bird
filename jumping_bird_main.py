@@ -6,7 +6,7 @@ from pygame.locals import *
 from settings import Settings
 from starting_window import StartingWindow
 from game_window import GameWindow
-from locker import Locker
+from locker_window import Locker
 
 
 class JumpingBird:
@@ -66,12 +66,17 @@ class JumpingBird:
     def choose_window_to_change(self, name_wnd):
         if name_wnd == 'starting_window':
             self.set_cur_window(self.starting_window)
-        if name_wnd == 'game_window':
+        elif name_wnd == 'game_window':
             self.game_is_running = True  # TODO: Реализовать нормальную смену состояния игры
             self.set_cur_window(self.game_window)
-        if name_wnd == 'locker':
+        elif name_wnd == 'locker_window':
             self.game_is_running = True  # TODO: Убрать
             self.set_cur_window(self.locker)
+
+        elif name_wnd == 'money_window':  # TODO: Изменить
+            pass
+        elif name_wnd == 'xp_window':
+            pass
 
     def set_cur_window(self, wnd):
         self.screen.fill((0, 0, 0))
