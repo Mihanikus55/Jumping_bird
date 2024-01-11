@@ -5,23 +5,26 @@ from pygame.locals import *
 
 from settings import Settings
 from starting_window import StartingWindow
+from game_window import GameWindow
 
 
-#0134910491042
 class JumpingBird:
     """Класс иницилизирующий игру на поверхностном уровне"""
+
     def __init__(self):
         pygame.init()
 
         self.settings = Settings()
-        self.starting_window = StartingWindow()
 
         self.screen = pygame.display.set_mode(
             (self.settings.screen_width, self.settings.screen_height))
         pygame.display.set_caption(self.settings.caption)
         pygame.display.set_icon(self.settings.icon)
 
-        self.is_start_window = True
+        self.starting_window = StartingWindow(self.screen)
+
+        self.game_is_running = False
+        self.cur_window = self.starting_window
 
         self.fpsClock = pygame.time.Clock()
 
@@ -29,10 +32,8 @@ class JumpingBird:
         """Метод с основным циклом игры"""
         while True:
             self.check_events()
-            if self.is_start_window:
-                self.starting_window.update(self.screen)
-            else:
-                self.update_screen()
+
+            self.cur_window.update()
 
             pygame.display.flip()
             self.fpsClock.tick(self.settings.fps)
@@ -43,10 +44,29 @@ class JumpingBird:
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == MOUSEBUTTONDOWN:
+                if event.button == 1 and not self.game_is_running:
+                    self.check_buttons_clicked(event.pos)
 
-    def update_screen(self):
-        """Метод в котором происходит основная отрисовка игры"""
-        self.screen.fill(self.settings.bg_color)
+                # TODO: Реализовать меню паузы чтобы можно было нормально вернуться на начальное окно
+                else:
+                    self.cur_window = self.starting_window
+                    self.game_is_running = False
+
+    def check_buttons_clicked(self, pos):
+        for button in self.cur_window.buttons:
+            if button.buttonRect.collidepoint(pos):
+                action = self.cur_window.check_button_action(button.button_text)
+                if action:
+                    self.choose_window_to_change(action)
+
+    def choose_window_to_change(self, name_wnd):
+        if name_wnd == 'game_window':
+            self.game_is_running = True  # # TODO: Реализовать нормальную смену состояния игры
+            self.change_cur_window(GameWindow)
+
+    def change_cur_window(self, wnd):
+        self.cur_window = wnd(self.screen)
 
 
 if __name__ == '__main__':
