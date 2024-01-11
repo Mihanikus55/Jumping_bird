@@ -31,23 +31,26 @@ class Settings:
             game_bg_layers.append(game_bg_layer)
         return game_bg_layers
 
-    def set_easy_gamemode(self):
+    def set_easy_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'easy'
         self.game_background = 'game_background_1'
         print(self.gamemode)
 
-    def set_normal_gamemode(self):
+    def set_normal_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'normal'
         print(self.gamemode)
 
-    def set_hard_gamemode(self):
+    def set_hard_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'hard'
         print(self.gamemode)
 
-    def set_infinity_gamemode(self):
+    def set_infinity_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'infinity'
         print(self.gamemode)
+
+    def set_locker_wnd(self):
+        self.cur_wnd = 'locker'

@@ -1,15 +1,14 @@
 import pygame
-from settings import Settings
 
 
 class Locker:
-    def __init__(self, screen):
-        self.settings = Settings()
-        self.buttons = pygame.sprite.Group()
+    def __init__(self, screen, settings):
         self.screen = screen
+        self.settings = settings
+        self.buttons = pygame.sprite.Group()
 
-    def update_screen(self):
-        self.screen.blit(self.settings.starting_bg, (0, 0))
+    def update(self):
+        self.screen.blit(self.settings.locker_bg, (0, 0))
 
     def change_clothes(self):
         pass

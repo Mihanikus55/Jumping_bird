@@ -24,6 +24,7 @@ class JumpingBird:
 
         self.starting_window = StartingWindow(self.screen, self.settings)
         self.game_window = GameWindow(self.screen, self.settings)
+        self.locker = Locker(self.screen, self.settings)
 
         self.game_is_running = False
         self.set_cur_window(self.starting_window)
@@ -69,7 +70,8 @@ class JumpingBird:
             self.game_is_running = True  # TODO: Реализовать нормальную смену состояния игры
             self.set_cur_window(self.game_window)
         if name_wnd == 'locker':
-            self.set_cur_window(Locker)
+            self.game_is_running = True  # TODO: Убрать
+            self.set_cur_window(self.locker)
 
     def set_cur_window(self, wnd):
         self.screen.fill((0, 0, 0))
