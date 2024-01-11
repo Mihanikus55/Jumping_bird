@@ -17,8 +17,8 @@ class Settings:
         self.starting_bg = pygame.transform.scale(pygame.image.load('data/start_background_2.png'),
                                                   (self.screen_width, self.screen_height))
 
-        self.locker_bg = pygame.transform.scale(pygame.image.load('data/origbig.png'),
-                                                  (self.screen_width, self.screen_height))
+        self.locker_bg = pygame.transform.scale(pygame.image.load('data/locker_bg.png'),
+                                                (self.screen_width, self.screen_height))
 
         self.buttons_font = pygame.font.SysFont('Arial', 40)
 
