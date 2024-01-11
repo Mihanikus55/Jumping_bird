@@ -11,20 +11,20 @@ class StartingWindow:
         self.create_buttons()
 
     def create_buttons(self):
-        Button(self.screen, self.settings, self.buttons,
-               870, 30, 300, 100, 'LOCKER', None)
-        Button(self.screen, self.settings, self.buttons,
-               30, 30, 120, 80, 'MONEY', None)
-        Button(self.screen, self.settings, self.buttons,
-               160, 30, 120, 80, 'XP', None)
-        Button(self.screen, self.settings, self.buttons,
-               100, 500, 150, 80, 'EASY', self.settings.set_easy_gamemode)
-        Button(self.screen, self.settings, self.buttons,
-               500, 500, 150, 80, 'NORMAL', self.settings.set_normal_gamemode)
-        Button(self.screen, self.settings, self.buttons,
-               1000, 500, 150, 80, 'HARD', self.settings.set_hard_gamemode)
-        Button(self.screen, self.settings, self.buttons,
-               250, 600, 700, 80, 'INFINITY', self.settings.set_infinity_gamemode)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 870, 30, 300, 100, 'LOCKER',
+               None)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 30, 30, 120, 80, 'MONEY',
+               None)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 160, 30, 120, 80, 'XP',
+               None)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 100, 580, 150, 80, 'EASY',
+               self.settings.set_easy_gamemode)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 520, 580, 150, 80, 'NORMAL',
+               self.settings.set_normal_gamemode)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 1000, 580, 150, 80, 'HARD',
+               self.settings.set_hard_gamemode)
+        Button(self.screen, self.settings, self.buttons, (150, 150, 150), 250, 680, 700, 80, 'INFINITY',
+               self.settings.set_infinity_gamemode)
 
     def update(self):
         self.screen.blit(self.settings.starting_bg, (0, 0))
