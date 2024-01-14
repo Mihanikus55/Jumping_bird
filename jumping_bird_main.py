@@ -7,6 +7,7 @@ from settings import Settings
 from starting_window import StartingWindow
 from game_window import GameWindow
 from locker_window import Locker
+from game_shop import Shop
 
 
 class JumpingBird:
@@ -25,6 +26,7 @@ class JumpingBird:
         self.starting_window = StartingWindow(self.screen, self.settings)
         self.game_window = GameWindow(self.screen, self.settings)
         self.locker = Locker(self.screen, self.settings)
+        self.shop = Shop(self.screen, self.settings)
 
         self.game_is_running = False
         self.set_cur_window(self.starting_window)
@@ -74,7 +76,9 @@ class JumpingBird:
             self.set_cur_window(self.locker)
 
         elif name_wnd == 'money_window':  # TODO: Изменить
-            pass
+            self.game_is_running = True
+            self.set_cur_window(self.shop)
+
         elif name_wnd == 'xp_window':
             pass
 

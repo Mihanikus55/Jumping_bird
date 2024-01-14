@@ -20,6 +20,9 @@ class Settings:
         self.locker_bg = pygame.transform.scale(pygame.image.load('data/locker_bg.png'),
                                                 (self.screen_width, self.screen_height))
 
+        self.shop_bg = pygame.transform.scale(pygame.image.load('data/shop_bg.png'),
+                                              (self.screen_width, self.screen_height))
+
         self.buttons_font = pygame.font.SysFont('Arial', 40)
 
     def load_paralax_background(self, bg, layers_cnt):

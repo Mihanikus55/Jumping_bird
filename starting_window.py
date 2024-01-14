@@ -17,7 +17,7 @@ class StartingWindow:
 
         Button(self.screen, self.settings, self.buttons, (150, 150, 150),
                30, 30, 120, 80, 'MONEY',
-               None)
+               self.settings.set_money_window)
 
         Button(self.screen, self.settings, self.buttons, (150, 150, 150),
                160, 30, 120, 80, 'XP',
