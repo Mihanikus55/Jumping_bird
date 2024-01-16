@@ -67,4 +67,5 @@ class Settings:
     def set_infinity_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'infinity'
+        self.game_background = self.load_paralax_background('game_background_4', 8)
         print(self.gamemode)
