@@ -42,5 +42,4 @@ class StartingWindow:
     def update(self):
         self.screen.blit(self.settings.starting_bg, (0, 0))
 
-        for button in self.buttons:
-            button.update()
+        self.buttons.update()

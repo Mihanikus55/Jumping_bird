@@ -28,7 +28,6 @@ class JumpingBird:
         self.locker = Locker(self.screen, self.settings)
         self.shop = Shop(self.screen, self.settings)
 
-        self.game_is_running = False
         self.set_cur_window(self.starting_window)
 
         self.fpsClock = pygame.time.Clock()
@@ -50,14 +49,11 @@ class JumpingBird:
                 pygame.quit()
                 sys.exit()
             if event.type == MOUSEBUTTONDOWN:
-                if event.button == 1 and not self.game_is_running:
-                    self.check_buttons_clicked(event.pos)
+                if event.button == 1:
+                    if self.cur_window == self.game_window:
+                        self.settings.toggle_state_game()
 
-                # TODO: Реализовать меню паузы чтобы можно было нормально вернуться на начальное окно
-                else:
-                    self.cur_window = self.starting_window
-                    self.screen.fill((0, 0, 0))
-                    self.game_is_running = False
+                    self.check_buttons_clicked(event.pos)
 
     def check_buttons_clicked(self, pos):
         for button in self.cur_window.buttons:
@@ -69,12 +65,9 @@ class JumpingBird:
         if name_wnd == 'starting_window':
             self.set_cur_window(self.starting_window)
         elif name_wnd == 'game_window':
-            self.game_is_running = True  # TODO: Реализовать нормальную смену состояния игры
             self.set_cur_window(self.game_window)
         elif name_wnd == 'locker_window':
-            self.game_is_running = True  # TODO: Убрать
             self.set_cur_window(self.locker)
-
         elif name_wnd == 'money_window':  # TODO: Изменить
             self.game_is_running = True
             self.set_cur_window(self.shop)
