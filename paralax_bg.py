@@ -12,10 +12,10 @@ class ParalaxBackground:
         self.load_paralax_background()
 
     def load_paralax_background(self):
-        speed = 1
+        speed = 1.5
         for i in range(1, self.layers_cnt + 1):
 
-            l_s_v = 0.2  # во сколько поднимается скорость каждого последующего слоя
+            l_s_v = 0.3  # На сколько поднимается скорость каждого последующего слоя
 
             Layer(self.bg_layers, f'data/{self.bg}/layer_{i}.png',
                   self.screen_width, self.screen_height, speed)
@@ -23,9 +23,7 @@ class ParalaxBackground:
             speed = round(l_s_v + speed, 1)
 
     def update(self, screen, game_is_running):
-        for i in range(2):
-            indent = i * self.screen_width
-            self.bg_layers.update(screen, indent, game_is_running)
+        self.bg_layers.update(screen, game_is_running)
 
 
 class Layer(Sprite):
@@ -43,12 +41,13 @@ class Layer(Sprite):
                                       (self.bg_width, self.bg_height)).convert_alpha()
 
     def move(self, dx):
-        self.layer_rect.move_ip(-dx, 0)
-        print(dx)
+        self.layer_rect.x -= dx
+        # print(dx)
         if self.layer_rect.x <= -self.bg_width:
-            self.layer_rect.x = 0
+            self.layer_rect.x += self.bg_width
 
-    def update(self, screen, indent, game_is_running):
-        screen.blit(self.bg_layer, (self.layer_rect.x + indent, self.layer_rect.y))
+    def update(self, screen, game_is_running):
+        screen.blit(self.bg_layer, (self.layer_rect.x, self.layer_rect.y))
+        screen.blit(self.bg_layer, (self.layer_rect.x + self.bg_width, self.layer_rect.y))
         if game_is_running:
             self.move(self.speed)
