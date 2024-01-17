@@ -42,23 +42,23 @@ class Settings:
     def set_easy_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'easy'
-        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_1', 5)
+        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_1', 5, 1)
         print(self.gamemode)
 
     def set_normal_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'normal'
-        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_2', 7)
+        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_2', 7, 1)
         print(self.gamemode)
 
     def set_hard_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'hard'
-        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_3', 8)
+        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_3', 8, 1)
         print(self.gamemode)
 
     def set_infinity_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
         self.gamemode = 'infinity'
-        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_4', 8)
+        self.game_background = PB(self.screen_width, self.screen_height, 'game_background_4', 8, 2)
         print(self.gamemode)
