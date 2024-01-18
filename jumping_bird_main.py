@@ -48,10 +48,12 @@ class JumpingBird:
                 sys.exit()
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
-                    if self.cur_window == self.game_window:
-                        self.settings.toggle_state_game()
-
                     self.check_buttons_clicked(event.pos)
+
+            if event.type == KEYDOWN:
+                if event.key == K_ESCAPE:
+                    if self.settings.game_is_running:
+                        self.game_window.set_pause()
 
     def check_buttons_clicked(self, pos):
         for button in self.cur_window.buttons:
