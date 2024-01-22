@@ -18,17 +18,14 @@ class Settings:
         self.cur_wnd = 'starting_wnd'
         self.gamemode = None
         self.game_is_running = False
+        self.pause_game = False
 
         self.locker_bg = pygame.transform.scale(pygame.image.load('data/locker_bg.png'),
                                                 (self.screen_width, self.screen_height))
 
-        self.shop_bg = pygame.transform.scale(pygame.image.load('data/shop_bg.png'),
-                                              (self.screen_width, self.screen_height))
+        self.pause_bg = pygame.transform.scale(pygame.image.load('data/pause_background.png'), (480, 275))
 
         self.buttons_font = pygame.font.SysFont('Arial', 40)
-
-    def toggle_state_game(self):
-        self.game_is_running = not self.game_is_running
 
     def set_starting_wnd(self):
         self.cur_wnd = 'starting_window'
@@ -44,24 +41,16 @@ class Settings:
 
     def set_easy_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
-        self.gamemode = 'easy'
         self.game_background = PB(self.screen_width, self.screen_height, 'game_background_1', 5, 1)
-        print(self.gamemode)
 
     def set_normal_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
-        self.gamemode = 'normal'
         self.game_background = PB(self.screen_width, self.screen_height, 'game_background_2', 7, 1)
-        print(self.gamemode)
 
     def set_hard_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
-        self.gamemode = 'hard'
         self.game_background = PB(self.screen_width, self.screen_height, 'game_background_3', 8, 1)
-        print(self.gamemode)
 
     def set_infinity_gamemode_wnd(self):
         self.cur_wnd = 'game_window'
-        self.gamemode = 'infinity'
         self.game_background = PB(self.screen_width, self.screen_height, 'game_background_4', 8, 2)
-        print(self.gamemode)
