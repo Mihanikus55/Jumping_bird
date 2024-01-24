@@ -44,30 +44,37 @@ class Locker:
             button.update()
 
     def yellow_clothes(self):
+        self.settings.set_bird("Bird2-1.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-1tit.png')
 
     def blue_clothes(self):
+        self.settings.set_bird("Bird2-2.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-2tit.png')
 
     def brown_clothes(self):
+        self.settings.set_bird("Bird2-3.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-5tit.png')
 
     def grey_clothes(self):
+        self.settings.set_bird("Bird2-4.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-6tit.png')
 
     def green_clothes(self):
+        self.settings.set_bird("Bird2-5.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-4tit.png')
 
     def red_clothes(self):
+        self.settings.set_bird("Bird2-6.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-3tit.png')
 
     def purple_clothes(self):
+        self.settings.set_bird("Bird2-7.png")
         self.surface.fill(self.transparent)
         self.bird = pygame.image.load('data/Bird2-7tit.png')
 

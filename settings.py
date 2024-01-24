@@ -25,6 +25,8 @@ class Settings:
         self.locker_bg = pygame.transform.scale(pygame.image.load('data/locker_bg.png'),
                                                 (self.screen_width, self.screen_height))
 
+        self.set_bird('Bird2-1.png')
+
         self.pause_bg = pygame.transform.scale(pygame.image.load('data/pause_background.png'), (480, 275))
 
         self.buttons_font = pygame.font.SysFont('Arial', 40)
@@ -33,6 +35,9 @@ class Settings:
     def terminate_program(self):
         pygame.quit()
         sys.exit()
+
+    def set_bird(self, bird):
+        self.sheet = pygame.image.load(f"data/bird_sheets/{bird}")
 
     def set_starting_wnd(self):
         self.pause_game = False
