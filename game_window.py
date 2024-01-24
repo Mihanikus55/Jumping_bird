@@ -13,9 +13,9 @@ class GameWindow:
         self.create_buttons()
 
     def create_buttons(self):
-        self.start = Button(self.screen, self.settings, self.buttons,
-                            520, 580, 150, 80, 'Start',
-                            self.start_game)
+        Button(self.screen, self.settings, self.buttons,
+               520, 580, 150, 80, 'Start',
+               self.start_game)
 
     def update(self):
         self.settings.game_background.update(self.screen, self.settings.game_is_running)
@@ -27,11 +27,11 @@ class GameWindow:
 
     def start_game(self):
         self.settings.game_is_running = True
-        self.buttons.remove(self.start)
+        self.buttons = pygame.sprite.Group()
 
     def set_pause(self):
-        self.settings.pause_game = True
         self.settings.game_is_running = False
+        self.settings.pause_game = True
         self.buttons = self.pause_wnd.buttons
 
     def resume_game(self):
@@ -39,7 +39,8 @@ class GameWindow:
         self.settings.pause_game = False
 
     def exit_game(self):
-        self.settings.set_starting_wnd()
+        if not self.settings.game_is_running:
+            self.settings.set_starting_wnd()
 
 
 class Pause(GameWindow):
