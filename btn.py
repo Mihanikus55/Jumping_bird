@@ -3,22 +3,20 @@ from pygame.sprite import Sprite
 
 
 class Button(Sprite):
-    def __init__(self, screen, settings, buttons, color, x, y, width, height, button_text, task):
+    def __init__(self, screen, settings, buttons, x, y, width, height, button_text, task,
+                 wnd_x=0, wnd_y=0, color=(150, 150, 150)):
         super().__init__(buttons)
-        self.color = color
         self.screen = screen
+        self.settings = settings
         self.task = task
+        self.color = color
         self.x = x
         self.y = y
-        self.width = width
-        self.height = height
-        self.button_text = button_text
-        self.settings = settings
-        self.buttonSurface = pygame.Surface((self.width, self.height))
-        self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-        self.buttonSurface.fill(color)
-        self.buttonSurf = self.settings.buttons_font.render(self.button_text, True, (20, 20, 20))
+        self.buttonSurface = pygame.Surface((width, height))
+        self.buttonRect = pygame.Rect(x + wnd_x, y + wnd_y, width, height)
+
+        self.buttonSurf = self.settings.buttons_font.render(button_text, True, (20, 20, 20))
 
     def do_task(self):
         if self.task:
@@ -31,9 +29,9 @@ class Button(Sprite):
             if pygame.mouse.get_pressed(num_buttons=3)[0]:
                 self.buttonSurface.fill((51, 51, 51))
         else:
-            self.buttonSurface.fill((150, 150, 150))
+            self.buttonSurface.fill(self.color)
         self.buttonSurface.blit(self.buttonSurf, [
             self.buttonRect.width / 2 - self.buttonSurf.get_rect().width / 2,
             self.buttonRect.height / 2 - self.buttonSurf.get_rect().height / 2
         ])
-        self.screen.blit(self.buttonSurface, self.buttonRect)
+        self.screen.blit(self.buttonSurface, (self.x, self.y))

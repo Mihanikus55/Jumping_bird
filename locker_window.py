@@ -1,5 +1,4 @@
 import pygame
-from pygame.examples.aliens import load_image
 
 from btn import Button
 
@@ -12,31 +11,23 @@ class Locker:
         self.create_buttons()
 
     def create_buttons(self):
-        Button(self.screen, self.settings, self.buttons, (150, 150, 150),
-               450, 450, 300, 100, 'TRY IT',
+        Button(self.screen, self.settings, self.buttons, 450, 450, 300, 100, 'TRY IT',
                self.settings.set_starting_wnd)
 
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               50, 150, 200, 100, 'yellow bird',
-               self.yellow_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               950, 600, 200, 100, 'blue bird',
-               self.blue_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               50, 300, 200, 100, 'brown bird',
-               self.brown_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               50, 450, 200, 100, 'grey bird',
-               self.grey_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               50, 600, 200, 100, 'green bird',
-               self.green_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               950, 150, 200, 100, 'red bird',
-               self.red_clothes)
-        Button(self.screen, self.settings, self.buttons, (255, 255, 0),
-               950, 380, 200, 100, 'purple bird',
-               self.purple_clothes)
+        Button(self.screen, self.settings, self.buttons, 50, 150, 200, 100, 'yellow bird',
+               self.yellow_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 950, 600, 200, 100, 'blue bird',
+               self.blue_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 50, 300, 200, 100, 'brown bird',
+               self.brown_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 50, 450, 200, 100, 'grey bird',
+               self.grey_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 50, 600, 200, 100, 'green bird',
+               self.green_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 950, 150, 200, 100, 'red bird',
+               self.red_clothes, color=(255, 255, 0))
+        Button(self.screen, self.settings, self.buttons, 950, 380, 200, 100, 'purple bird',
+               self.purple_clothes, color=(255, 255, 0))
 
         self.surface = pygame.Surface((200, 200), pygame.SRCALPHA)
         self.bird = pygame.image.load('data/Bird2-1tit.png')
