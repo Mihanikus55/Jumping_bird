@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from paralax_bg import ParalaxBackground as PB
 
@@ -15,7 +17,7 @@ class Settings:
 
         self.starting_bg = pygame.transform.scale(pygame.image.load('data/start_background_2.png'),
                                                   (self.screen_width, self.screen_height))
-        self.cur_wnd = 'starting_wnd'
+        self.cur_wnd = 'starting_window'
         self.gamemode = None
         self.game_is_running = False
         self.pause_game = False
@@ -26,8 +28,14 @@ class Settings:
         self.pause_bg = pygame.transform.scale(pygame.image.load('data/pause_background.png'), (480, 275))
 
         self.buttons_font = pygame.font.SysFont('Arial', 40)
+        self.pause_font = pygame.font.SysFont('Arial', 50, bold=True)
+
+    def terminate_program(self):
+        pygame.quit()
+        sys.exit()
 
     def set_starting_wnd(self):
+        self.pause_game = False
         self.cur_wnd = 'starting_window'
 
     def set_locker_wnd(self):

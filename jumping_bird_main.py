@@ -1,5 +1,3 @@
-import sys
-
 import pygame
 from pygame.locals import *
 
@@ -28,13 +26,14 @@ class JumpingBird:
         self.locker = Locker(self.screen, self.settings)
         self.shop = Shop(self.screen, self.settings)
 
-        self.set_cur_window(self.starting_window)
+        self.choose_window_to_change(self.settings.cur_wnd)
 
         self.fpsClock = pygame.time.Clock()
 
     def run_game(self):
         """Метод с основным циклом игры"""
         while True:
+            self.screen.fill((0, 0, 0))
             self.check_events()
 
             self.cur_window.update()
@@ -46,8 +45,7 @@ class JumpingBird:
         """Метод обрабатывающий события (взаимодействие с пользователем)"""
         for event in pygame.event.get():
             if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
+                self.settings.terminate_program()
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     self.check_buttons_clicked(event.pos)
@@ -65,6 +63,7 @@ class JumpingBird:
 
     def choose_window_to_change(self, name_wnd):
         if name_wnd == 'starting_window':
+            self.game_window.start_over()
             self.set_cur_window(self.starting_window)
         elif name_wnd == 'game_window':
             self.set_cur_window(self.game_window)
@@ -78,7 +77,6 @@ class JumpingBird:
             pass
 
     def set_cur_window(self, wnd):
-        self.screen.fill((0, 0, 0))
         self.cur_window = wnd
 
 
