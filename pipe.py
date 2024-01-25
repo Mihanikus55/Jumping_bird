@@ -3,13 +3,13 @@ import random
 
 pygame.init()
 
-empty_space = 200
-screen_width = 800
-screen_height = 600
+empty_space = 400
+screen_width = 1200
+screen_height = 800
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
 
-pipe_img = pygame.transform.scale(pygame.image.load('pipe_long.png'),
+pipe_img = pygame.transform.scale(pygame.image.load('data/pipes/pipe_long.png'),
                                   (300, 250))
 
 pipe_img_flipped = pygame.transform.flip(pipe_img, False, True)  # Перевернутое изображение трубы
@@ -17,8 +17,8 @@ pipe_img_flipped = pygame.transform.flip(pipe_img, False, True)  # Переве�
 
 class Pipe:
     def __init__(self, x, y, flipped):
-        self.image = pipe_img_flipped if flipped else pygame.transform.scale(pygame.image.load('pipe_long.png'),
-                                                                             (300, 550))
+        self.image = pipe_img_flipped if flipped else pygame.transform.scale(pygame.image.load('data/pipes/pipe_long.png'),
+                                                                             (300, 650))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
