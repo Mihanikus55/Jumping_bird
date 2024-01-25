@@ -41,6 +41,7 @@ class GameWindow:
         self.settings.game_background.update(self.screen, self.settings.game_is_running)
 
         self.all_sprites.update()
+        self.all_sprites.draw(self.screen)
 
         if self.settings.pause_game:
             self.pause_wnd.update()

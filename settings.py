@@ -37,7 +37,8 @@ class Settings:
         sys.exit()
 
     def set_bird(self, bird):
-        self.sheet = pygame.image.load(f"data/bird_sheets/{bird}")
+        birds = pygame.image.load(f"data/bird_sheets/{bird}")
+        self.sheet = pygame.transform.scale(birds, (birds.get_width()*3, birds.get_height() * 3))
 
     def set_starting_wnd(self):
         self.pause_game = False
