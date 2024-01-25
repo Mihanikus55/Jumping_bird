@@ -24,6 +24,9 @@ class Bird(Sprite):
             self.frames.append(sheet.subsurface(pygame.Rect(
                 frame_location, self.rect.size)))
 
+    def move(self, dy):
+        self.rect.move_ip(0, self.settings.bird_speed * dy)
+
     def update(self):
         self.cur_frame = ((pygame.time.get_ticks() - self.start_time) // self.delay) % len(self.frames)
         self.image = self.frames[self.cur_frame]

@@ -48,6 +48,9 @@ class JumpingBird:
                 if event.button == 1:
                     self.check_buttons_clicked(event.pos)
 
+            up = False
+            down = False
+
             if event.type == KEYDOWN:
                 if event.key == K_UP:
                     up = True
@@ -64,8 +67,7 @@ class JumpingBird:
                 if event.key == K_DOWN:
                     down = False
 
-            # speed_y = down - up
-            # player.move(0, speed_y)
+            self.game_window.dy = down - up
 
     def check_buttons_clicked(self, pos):
         for button in self.cur_window.buttons:

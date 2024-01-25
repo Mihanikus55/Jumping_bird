@@ -26,6 +26,7 @@ class Settings:
                                                 (self.screen_width, self.screen_height))
 
         self.set_bird('Bird2-1.png')
+        self.bird_speed = 4
 
         self.pause_bg = pygame.transform.scale(pygame.image.load('data/pause_background.png'), (480, 275))
 

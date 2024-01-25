@@ -9,10 +9,11 @@ class GameWindow:
         self.screen = screen
 
     def start_over(self):
+        self.dy= 0
         self.pause_wnd = Pause(self.screen, self.settings)
         self.buttons = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
-        Bird(self.screen, self.settings, self.all_sprites)
+        self.bird = Bird(self.screen, self.settings, self.all_sprites)
         self.create_buttons()
 
     def create_buttons(self):
@@ -45,6 +46,8 @@ class GameWindow:
 
         if self.settings.pause_game:
             self.pause_wnd.update()
+        else:
+            self.bird.move(self.dy)
 
         self.buttons.update()
 
