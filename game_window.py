@@ -46,7 +46,8 @@ class GameWindow:
 
         if self.settings.pause_game:
             self.pause_wnd.update()
-        else:
+
+        if self.settings.game_is_running and not self.settings.pause_game:
             self.bird.move(self.dy)
 
         self.buttons.update()
